@@ -1,0 +1,36 @@
+--------------- Build Started: 01/02/2019 16:04:09 Project: GPS_kit, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+The code generation step is up to date.
+arm-none-eabi-gcc.exe -c main.c -o .\CortexM0\ARM_GCC_541\Debug\main.o -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -Og
+main.c: In function 'prepare_GPGGA':
+main.c:336:16: warning: array subscript has type 'char' [-Wchar-subscripts]
+     while ((buf[n] != 0x0d) && (tout++ < 254)) {n++;}
+                ^
+main.c:337:18: warning: array subscript has type 'char' [-Wchar-subscripts]
+     mydevice.NMEA[n] = 0x00;
+                  ^
+main.c: In function 'prepare_IMEI':
+main.c:350:16: warning: array subscript has type 'char' [-Wchar-subscripts]
+     while ((buf[n] <= 0x2f) && (tout++ < sizeof(mydevice.IMEI))) {n++;} //SayÄ±sal bilgiyi ara.
+                ^
+main.c: In function 'read_mpu':
+main.c:722:31: warning: unused variable 'zang' [-Wunused-variable]
+     static double xang, yang, zang = 0;
+                               ^
+main.c:722:25: warning: unused variable 'yang' [-Wunused-variable]
+     static double xang, yang, zang = 0;
+                         ^
+main.c:722:19: warning: unused variable 'xang' [-Wunused-variable]
+     static double xang, yang, zang = 0;
+                   ^
+main.c: In function 'process_motion':
+main.c:1036:11: warning: unused variable 'gz_p' [-Wunused-variable]
+     float gz_p = (gz - gz_offset) / CONST_2000;
+           ^
+arm-none-eabi-ar.exe -rs .\CortexM0\ARM_GCC_541\Debug\GPS_kit.a .\CortexM0\ARM_GCC_541\Debug\PWRKEY.o .\CortexM0\ARM_GCC_541\Debug\PWRKEY_PM.o .\CortexM0\ARM_GCC_541\Debug\CyFlash.o .\CortexM0\ARM_GCC_541\Debug\CyLib.o .\CortexM0\ARM_GCC_541\Debug\cyPm.o .\CortexM0\ARM_GCC_541\Debug\cyutils.o .\CortexM0\ARM_GCC_541\Debug\CyLFClk.o .\CortexM0\ARM_GCC_541\Debug\Led1.o .\CortexM0\ARM_GCC_541\Debug\Led1_PM.o .\CortexM0\ARM_GCC_541\Debug\I2C_1.o .\CortexM0\ARM_GCC_541\Debug\I2C_1_I2C_INT.o .\CortexM0\ARM_GCC_541\Debug\I2C_1_I2C.o .\CortexM0\ARM_GCC_541\Debug\I2C_1_I2C_BOOT.o .\CortexM0\ARM_GCC_541\Debug\I2C_1_I2C_MASTER.o .\CortexM0\ARM_GCC_541\Debug\I2C_1_PM.o .\CortexM0\ARM_GCC_541\Debug\I2C_1_BOOT.o .\CortexM0\ARM_GCC_541\Debug\I2C_1_SCBCLK.o .\CortexM0\ARM_GCC_541\Debug\I2C_1_sda.o .\CortexM0\ARM_GCC_541\Debug\I2C_1_sda_PM.o .\CortexM0\ARM_GCC_541\Debug\I2C_1_scl.o .\CortexM0\ARM_GCC_541\Debug\I2C_1_scl_PM.o .\CortexM0\ARM_GCC_541\Debug\I2C_1_SCB_IRQ.o .\CortexM0\ARM_GCC_541\Debug\CyDMA.o .\CortexM0\ARM_GCC_541\Debug\Pin_1.o .\CortexM0\ARM_GCC_541\Debug\Pin_1_PM.o .\CortexM0\ARM_GCC_541\Debug\UART_GSM.o .\CortexM0\ARM_GCC_541\Debug\UART_GSM_SPI_UART.o .\CortexM0\ARM_GCC_541\Debug\UART_GSM_SPI_UART_INT.o .\CortexM0\ARM_GCC_541\Debug\UART_GSM_PM.o .\CortexM0\ARM_GCC_541\Debug\UART_GSM_UART.o .\CortexM0\ARM_GCC_541\Debug\UART_GSM_BOOT.o .\CortexM0\ARM_GCC_541\Debug\UART_GSM_UART_BOOT.o .\CortexM0\ARM_GCC_541\Debug\UART_GPS.o .\CortexM0\ARM_GCC_541\Debug\UART_GPS_SPI_UART.o .\CortexM0\ARM_GCC_541\Debug\UART_GPS_SPI_UART_INT.o .\CortexM0\ARM_GCC_541\Debug\UART_GPS_PM.o .\CortexM0\ARM_GCC_541\Debug\UART_GPS_UART.o .\CortexM0\ARM_GCC_541\Debug\UART_GPS_BOOT.o .\CortexM0\ARM_GCC_541\Debug\UART_GPS_UART_BOOT.o .\CortexM0\ARM_GCC_541\Debug\GPS_RESET.o .\CortexM0\ARM_GCC_541\Debug\GPS_RESET_PM.o .\CortexM0\ARM_GCC_541\Debug\UART_GSM_SCBCLK.o .\CortexM0\ARM_GCC_541\Debug\UART_GSM_tx.o .\CortexM0\ARM_GCC_541\Debug\UART_GSM_tx_PM.o .\CortexM0\ARM_GCC_541\Debug\UART_GSM_rx.o .\CortexM0\ARM_GCC_541\Debug\UART_GSM_rx_PM.o .\CortexM0\ARM_GCC_541\Debug\UART_GPS_SCBCLK.o .\CortexM0\ARM_GCC_541\Debug\UART_GPS_tx.o .\CortexM0\ARM_GCC_541\Debug\UART_GPS_tx_PM.o .\CortexM0\ARM_GCC_541\Debug\UART_GPS_rx.o .\CortexM0\ARM_GCC_541\Debug\UART_GPS_rx_PM.o .\CortexM0\ARM_GCC_541\Debug\UART_GPS_SCB_IRQ.o .\CortexM0\ARM_GCC_541\Debug\UART_GSM_SCB_IRQ.o .\CortexM0\ARM_GCC_541\Debug\CyBootAsmGnu.o
+arm-none-eabi-ar.exe: creating .\CortexM0\ARM_GCC_541\Debug\GPS_kit.a
+arm-none-eabi-gcc.exe -Wl,--start-group -o C:\Users\Babur\Dropbox\projeler\GPS_old\Yazilim\cy8ckit\GPS_kit.cydsn\CortexM0\ARM_GCC_541\Debug\GPS_kit.elf .\CortexM0\ARM_GCC_541\Debug\main.o .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM0\ARM_GCC_541\Debug\cymetadata.o .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o .\CortexM0\ARM_GCC_541\Debug\GPS_kit.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM0\ARM_GCC_541\Debug\CyComponentLibrary.a" -mcpu=cortex-m0 -mthumb -l m -L Generated_Source\PSoC4 -Wl,-Map,.\CortexM0\ARM_GCC_541\Debug/GPS_kit.map -T Generated_Source\PSoC4\cm0gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects -Wl,--end-group
+cyelftool.exe -C C:\Users\Babur\Dropbox\projeler\GPS_old\Yazilim\cy8ckit\GPS_kit.cydsn\CortexM0\ARM_GCC_541\Debug\GPS_kit.elf --flash_row_size 128 --flash_size 131072 --flash_offset 0x00000000
+cyelftool.exe -S C:\Users\Babur\Dropbox\projeler\GPS_old\Yazilim\cy8ckit\GPS_kit.cydsn\CortexM0\ARM_GCC_541\Debug\GPS_kit.elf
+Flash used: 7960 of 131072 bytes (%6,1).
+SRAM used: 3584 of 16384 bytes (%21,9). Stack: 1024 bytes. Heap: 128 bytes.
+--------------- Build Succeeded: 01/02/2019 16:04:11 ---------------

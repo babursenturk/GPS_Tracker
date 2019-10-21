@@ -1,0 +1,95 @@
+#151853,4058.471909,N,2843.367283,E,1,4,2.056997,41.890938,M,39.479111,M,,0000
+
+{
+	"mydevice": [{
+		"mydevid": "modemturkiye.wordpress.com",
+		"utctime": "133020",
+		"latt": "4058.471909,N",
+		"lon": "02843.367283,E",
+		"satquality": "1",
+		"satellites": "3",
+		"myaltitude": "43",
+		"speedkmh": "0",
+		"myevent": "none",
+		"mytemp": "42"
+	}]
+}
+
+ "\x22mydevice\x22\x00",
+ "\x22mydevid\x22\x00",    
+ "\x22utctime\x22\x00",    
+ "\x22latt\x22\x00", 
+ "\x22lon\x22\x00",     
+ "\x22satquality\x22\x00",
+ "\x22satellites\x22\x00",
+ "\x22myaltitude\x22\x00",
+ "\x22speedkmh\x22\x00",
+ "\x22myevent\x22\x00",
+ "\x22mytemp\x22\x00",
+
+/**OZEL DENEMELER*/
+typedef struct {
+    char IMEI[16];              //Modem imei nr
+    char NMEA[128];             //NMEA data in GPGGA format
+} device;
+static device   mydevice;
+char    jsonstring[200];        //Sunucuya gonderilecek JSON paket.
+
+
+//JSON objects
+static const char jsonobj[6][15] = {
+ "mydevice\x00",
+ "devid\x00",    
+ "utctime\x00",    
+ "long\x00", 
+ "lat\x00",     
+ "event\x00",   
+};
+
+
+void prepareJSON(void)
+{
+    uint8   resplen = 0;
+    uint8   den = 0;
+    uint8   whtout = 0;
+    char    nmeapack[78] = {"151853,4058.471909,N,2843.367283,E,1,4,2.056997,41.890938,M,39.479111,M,,0000"};
+    
+    for (den=0; den<15; den++)
+        mydevice.IMEI[den] = 0x40 + den;
+        
+    memcpy(&mydevice.NMEA[0], &nmeapack[0], 77);
+        
+    
+    sprintf(&jsonstring[0], "\x7b\x0d\x0a\x22");
+    resplen +=4;
+    sprintf(&jsonstring[resplen],"%s", jsonobj[0]);                 //mydevice
+    resplen +=8;
+    sprintf(&jsonstring[resplen], "\x22\x3a\x20\x5b\x7b\x0d\x0a\x22");
+    resplen +=8;
+    sprintf(&jsonstring[resplen],"%s", jsonobj[1]);                 //devid
+    resplen +=5;
+    sprintf(&jsonstring[resplen], "\x22\x3a\x20\x22");              //": "
+    resplen +=4;
+    sprintf(&jsonstring[resplen], "%s", mydevice.IMEI);             //use IMEI for uniq device id
+    resplen +=15;
+    sprintf(&jsonstring[resplen], "\x22\x2c\x0d\x0a\x22");
+    resplen +=5;
+    sprintf(&jsonstring[resplen],"%s", jsonobj[2]);                 //utctime
+    resplen +=7;
+    sprintf(&jsonstring[resplen], "\x22\x3a\x20\x22");              //": "
+    resplen +=4;
+    memcpy(&jsonstring[resplen], &mydevice.NMEA[0], 6);
+	resplen +=6;
+    
+    while ((mydevice.NMEA[den] != 0x2c) && (++whtout < 128)) den++;
+    whtout = 0;
+    while ((mydevice.NMEA[den] != 0x4e) && (mydevice.NMEA[den] != 0x53) && (++whtout < 128))
+    {
+        jsonstring[resplen] = mydevice.NMEA[den];
+        resplen++;
+        den++;   
+    }
+    whtout = 0;
+    
+}
+
